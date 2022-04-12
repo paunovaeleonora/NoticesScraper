@@ -18,10 +18,18 @@ then press filter:
   - Right click on it and copy as Curl (bash).
   - Open Postman and go to File / Import / , select raw text and paste, then press Continue and Import. Click on the </> icon to view the generated python script.
   - Copy payload and headers and replace the existing ones into spiders/notices.py file.
-The scripts has one start links. Collects all the tender notices for the chosen day, based on the total items and page size calculates the total number of pages. 
-After that collects all the notices following the pages ahead and if the validation passes, it collects the required information.
 
-The data is stored in SQLite database, and every time when we run the script it adds only the tender notices that do not exist already in the database.
+
+The scripts has one start links. Collects all the tender notices for the chosen day from the website API, based on the total items and page size calculates the total number of pages. 
+After that collects all the notices following the pages ahead and if the validation passes, it collects the required information and adds it to the database table.
+
+
+Database:
+
+  - The data is stored in SQLite database,
+  - Every time when the script is ran it adds only the tender notices that do not exist already in the database,
+  - database relations need further modification,
+  - notice_number is set as primary key
 
 Project Requirements:
    -  Python on you device, if not already installed,
@@ -32,3 +40,4 @@ Project Requirements:
    - to run the project run "scrapy crawl notices".
 
 To see the collected information you can to go to: https://sqliteonline.com/ and upload your database.
+If you use Pycharm you can see the db file directly in the IDE by double clicking notices.db file and setting the conection. 
